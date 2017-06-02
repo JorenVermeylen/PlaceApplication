@@ -1,23 +1,20 @@
 package ucll.da.placedomain.gatherer;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import ucll.da.placedomain.domain.DomainException;
-
-import javax.enterprise.context.RequestScoped;
-import javax.enterprise.inject.Default;
-import javax.inject.Named;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 import java.util.Scanner;
+import javax.enterprise.context.RequestScoped;
+import javax.enterprise.inject.Default;
+import javax.inject.Named;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import ucll.da.placedomain.domain.DomainException;
 
 /**
  * Created by verme on 7/05/2017.
@@ -75,7 +72,7 @@ public class PlaceGatherer {
     public String getOpeningHoursFromGooglePlace(String placeId) throws DomainException {
         try {
             String openingHours = "";
-            if (this.getGooglePlaceDetails(placeId).has("openingHours")) {
+            if (this.getGooglePlaceDetails(placeId).has("opening_hours")) {
                 JSONObject jsonObject = this.getGooglePlaceDetails(placeId).getJSONObject("opening_hours");
                 JSONArray arr = jsonObject.getJSONArray("weekday_text");
                 openingHours = "\t";

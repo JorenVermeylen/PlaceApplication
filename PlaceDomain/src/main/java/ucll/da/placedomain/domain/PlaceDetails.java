@@ -109,8 +109,11 @@ public class PlaceDetails {
     }
 
     public void setOpeningHours(String openingHours) throws DomainException {
-        if (openingHours == null || openingHours.equals("")) {
-            throw new DomainException("OpeningHours can't be null or empty.");
+        if (openingHours == null) {
+            throw new DomainException("OpeningHours can't be null.");
+        }
+        if(openingHours.equals("")) {
+            this.openingHours = "There are no opening hours provided.";
         }
         this.openingHours = openingHours;
     }

@@ -11,6 +11,7 @@ import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.util.List;
+import ucll.da.placedomain.domain.DomainException;
 
 /**
  * Created by verme on 4/05/2017.
@@ -72,7 +73,7 @@ public class PlaceServiceImpl implements PlaceService {
         try {
             placeDetails = new PlaceDetails(gatherer.getNameFromGooglePlace(place.getPlaceId()), gatherer.getLongitudeFromGooglePlace(place.getPlaceId()), gatherer.getLatitudeFromGooglePlace(place.getPlaceId()), gatherer.getAddressFromGooglePlace(place.getPlaceId()), gatherer.getRatingFromGooglePlace(place.getPlaceId()), gatherer.getOpeningHoursFromGooglePlace(place.getPlaceId()));
             placeDB.addPlaceDetailsToPlace(id, placeDetails);
-        } catch (Exception e) {
+        } catch (DBException | DomainException e) {
             throw new ServiceException(e.getMessage());
         }
     }

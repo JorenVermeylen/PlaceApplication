@@ -14,11 +14,11 @@ public interface PlaceDB {
 
     Place getPlaceById(Long id) throws DBException;
 
-    void addPlace(Place place) throws DBException;
+    boolean addPlace(Place place) throws DBException;
 
-    void updatePlace(Long id, Place place) throws DBException;
+    boolean updatePlace(Long id, Place place) throws DBException;
 
-    void deletePlace(Long id) throws DBException;
+    boolean deletePlace(Long id) throws DBException;
 
-    void addPlaceDetailsToPlace(Long id, PlaceDetails placeDetails) throws DBException;
+    Place addPlaceDetailsToPlace(Long id, PlaceDetails placeDetails) throws DBException;
 }

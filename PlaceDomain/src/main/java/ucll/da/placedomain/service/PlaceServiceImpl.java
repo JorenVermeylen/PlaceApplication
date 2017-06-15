@@ -46,39 +46,39 @@ public class PlaceServiceImpl implements PlaceService {
     }
 
     @Override
-    public void addPlace(Place place) throws ServiceException {
+    public boolean addPlace(Place place) throws ServiceException {
         try {
-            placeDB.addPlace(place);
+            return placeDB.addPlace(place);
         } catch (DBException e) {
             throw new ServiceException(e.getMessage());
         }
     }
 
     @Override
-    public void updatePlace(Long id, Place place) throws ServiceException {
+    public boolean updatePlace(Long id, Place place) throws ServiceException {
         try {
-            placeDB.updatePlace(id, place);
+            return placeDB.updatePlace(id, place);
         } catch (DBException e) {
             throw new ServiceException(e.getMessage());
         }
     }
 
     @Override
-    public void deletePlace(Long id) throws ServiceException {
+    public boolean deletePlace(Long id) throws ServiceException {
         try {
-            placeDB.deletePlace(id);
+            return placeDB.deletePlace(id);
         } catch (DBException e) {
             throw new ServiceException(e.getMessage());
         }
     }
 
     @Override
-    public void generatePlaceDetailsFromPlace(Long id) throws ServiceException {
+    public Place generatePlaceDetailsFromPlace(Long id) throws ServiceException {
         Place place = this.getPlaceById(id);
         PlaceDetails placeDetails = null;
         try {
             placeDetails = new PlaceDetails(gatherer.getNameFromGooglePlace(place.getPlaceId()), gatherer.getLongitudeFromGooglePlace(place.getPlaceId()), gatherer.getLatitudeFromGooglePlace(place.getPlaceId()), gatherer.getAddressFromGooglePlace(place.getPlaceId()), gatherer.getRatingFromGooglePlace(place.getPlaceId()), gatherer.getOpeningHoursFromGooglePlace(place.getPlaceId()));
-            placeDB.addPlaceDetailsToPlace(id, placeDetails);
+            return placeDB.addPlaceDetailsToPlace(id, placeDetails);
         } catch (DBException | DomainException e) {
             throw new ServiceException(e.getMessage());
         }

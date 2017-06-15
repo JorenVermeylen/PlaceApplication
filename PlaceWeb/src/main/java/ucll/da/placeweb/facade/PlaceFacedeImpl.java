@@ -21,27 +21,33 @@ public class PlaceFacedeImpl implements PlaceFacade {
     @Inject
     private PlaceService placeService;
 
+    @Override
     public List<Place> getAllPlaces() throws ServiceException {
         return placeService.getAllPlaces();
     }
 
+    @Override
     public Place getPlaceById(Long id) throws ServiceException {
         return placeService.getPlaceById(id);
     }
 
-    public void addPlace(Place place) throws ServiceException {
-        placeService.addPlace(place);
+    @Override
+    public boolean addPlace(Place place) throws ServiceException {
+        return placeService.addPlace(place);
     }
 
-    public void updatePlace(Long id, Place place) throws ServiceException {
-        placeService.updatePlace(id, place);
+    @Override
+    public boolean updatePlace(Long id, Place place) throws ServiceException {
+        return placeService.updatePlace(id, place);
     }
 
-    public void deletePlace(Long id) throws ServiceException {
-        placeService.deletePlace(id);
+    @Override
+    public boolean deletePlace(Long id) throws ServiceException {
+        return placeService.deletePlace(id);
     }
 
-    public void generatePlaceDetailsFromPlace(Long id) throws ServiceException {
-        placeService.generatePlaceDetailsFromPlace(id);
+    @Override
+    public Place generatePlaceDetailsFromPlace(Long id) throws ServiceException {
+        return placeService.generatePlaceDetailsFromPlace(id);
     }
 }

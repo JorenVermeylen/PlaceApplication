@@ -45,10 +45,11 @@ public class PlaceDBImpl implements PlaceDB {
 
     @Transactional
     @Override
-    public void addPlace(Place place) throws DBException {
+    public boolean addPlace(Place place) throws DBException {
         try {
             em.persist(place);
             em.flush();
+            return true;
         } catch (Exception e) {
             throw new DBException("Can't add the place. " + e.getMessage());
         }
@@ -56,7 +57,7 @@ public class PlaceDBImpl implements PlaceDB {
 
     @Transactional
     @Override
-    public void updatePlace(Long id, Place place) throws DBException {
+    public boolean updatePlace(Long id, Place place) throws DBException {
         try {
             Query query = em.createQuery("UPDATE Place p SET p.placeId = :placeId, p.date = :date, p.placeDetails = :placeDetails WHERE p.id = :id");
             query.setParameter("id", id);
@@ -64,6 +65,7 @@ public class PlaceDBImpl implements PlaceDB {
             query.setParameter("date", place.getDate());
             query.setParameter("placeDetails", place.getPlaceDetails());
             query.executeUpdate();
+            return true;
         } catch (Exception e) {
             throw new DBException("Can't update the place. " + e.getMessage());
         }
@@ -71,11 +73,12 @@ public class PlaceDBImpl implements PlaceDB {
 
     @Transactional
     @Override
-    public void deletePlace(Long id) throws DBException {
+    public boolean deletePlace(Long id) throws DBException {
         try {
             Place place = this.getPlaceById(id);
             em.remove(place);
             em.flush();
+            return true;
         } catch (DBException e) {
             throw new DBException("Can't delete the place. " + e.getMessage());
         }
@@ -83,12 +86,13 @@ public class PlaceDBImpl implements PlaceDB {
 
     @Transactional
     @Override
-    public void addPlaceDetailsToPlace(Long id, PlaceDetails placeDetails) throws DBException {
+    public Place addPlaceDetailsToPlace(Long id, PlaceDetails placeDetails) throws DBException {
         try {
             Place place = this.getPlaceById(id);
             place.setPlaceDetails(placeDetails);
             em.persist(place);
             em.flush();
+            return place;
         } catch (DBException | DomainException e) {
             throw new DBException("Can't add the placeDetails. " + e.getMessage());
         }

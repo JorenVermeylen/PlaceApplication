@@ -14,12 +14,12 @@ public interface PlaceFacade {
 
     Place getPlaceById(Long id) throws ServiceException;
 
-    void addPlace(Place place) throws ServiceException;
+    boolean addPlace(Place place) throws ServiceException;
 
-    void updatePlace(Long id, Place place) throws ServiceException;
+    boolean updatePlace(Long id, Place place) throws ServiceException;
 
-    void deletePlace(Long id) throws ServiceException;
+    boolean deletePlace(Long id) throws ServiceException;
 
-    void generatePlaceDetailsFromPlace(Long id) throws ServiceException;
+    Place generatePlaceDetailsFromPlace(Long id) throws ServiceException;
 
 }

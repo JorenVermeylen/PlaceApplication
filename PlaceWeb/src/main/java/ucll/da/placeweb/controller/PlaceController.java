@@ -49,30 +49,30 @@ public class PlaceController {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public void addPlace(Place place) throws ServiceException {
-        facade.addPlace(place);
+    @Produces(MediaType.APPLICATION_JSON)
+    public boolean addPlace(Place place) throws ServiceException {
+        return facade.addPlace(place);
     }
 
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id}")
-    public void updatePlace(@PathParam("id") long id, Place place) throws ServiceException {
-        facade.updatePlace(id, place);
+    public boolean updatePlace(@PathParam("id") long id, Place place) throws ServiceException {
+        return facade.updatePlace(id, place);
     }
 
     @DELETE
-    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/{id}")
-    public void deletePlace(@PathParam("id") Long id) throws ServiceException {
-        facade.deletePlace(id);
+    public boolean deletePlace(@PathParam("id") Long id) throws ServiceException {
+        return facade.deletePlace(id);
     }
 
     @POST
-    @Consumes(MediaType.APPLICATION_JSON)
     @Path("/generatePlaceDetails/{id}")
-    public void generatePlaceDetailsFromPlace(@PathParam("id") Long id) throws ServiceException {
-        facade.generatePlaceDetailsFromPlace(id);
+    @Produces(MediaType.APPLICATION_JSON)
+    public Place generatePlaceDetailsFromPlace(@PathParam("id") Long id) throws ServiceException {
+        return facade.generatePlaceDetailsFromPlace(id);
     }
 }

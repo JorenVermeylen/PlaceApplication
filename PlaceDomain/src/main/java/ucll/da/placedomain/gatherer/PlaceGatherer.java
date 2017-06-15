@@ -17,7 +17,7 @@ import org.json.JSONObject;
 import ucll.da.placedomain.domain.DomainException;
 
 /**
- * Created by verme on 7/05/2017.
+ * Created by Joren on 7/05/2017.
  */
 @Named
 @RequestScoped
@@ -93,7 +93,7 @@ public class PlaceGatherer {
             URI uri = new URI("https",
                     "maps.googleapis.com",
                     "/maps/api/place/details/json",
-                    "placeid=" + placeId + "&key=AIzaSyD2kHFGXbHmzP0Jqql0JXoTznGHDmvx9qU",
+                    "placeid=" + placeId + "&key=AIzaSyBgkM2K2y0OpfT8xhcJuWw2dfTS3HprJ9k",
                     null);
             URLConnection connection = new URL(uri.toASCIIString()).openConnection();
             connection.setRequestProperty("Accept-Charset", charset);

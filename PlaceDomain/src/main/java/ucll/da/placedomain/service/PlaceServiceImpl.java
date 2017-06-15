@@ -14,7 +14,7 @@ import java.util.List;
 import ucll.da.placedomain.domain.DomainException;
 
 /**
- * Created by verme on 4/05/2017.
+ * Created by Joren on 4/05/2017.
  */
 @Named
 @RequestScoped
@@ -27,6 +27,7 @@ public class PlaceServiceImpl implements PlaceService {
     @Inject
     private PlaceGatherer gatherer;
 
+    @Override
     public List<Place> getAllPlaces() throws ServiceException {
         try {
             return placeDB.getAllPlaces();
@@ -35,6 +36,7 @@ public class PlaceServiceImpl implements PlaceService {
         }
     }
 
+    @Override
     public Place getPlaceById(Long id) throws ServiceException {
         try {
             return placeDB.getPlaceById(id);
@@ -43,6 +45,7 @@ public class PlaceServiceImpl implements PlaceService {
         }
     }
 
+    @Override
     public void addPlace(Place place) throws ServiceException {
         try {
             placeDB.addPlace(place);
@@ -51,6 +54,7 @@ public class PlaceServiceImpl implements PlaceService {
         }
     }
 
+    @Override
     public void updatePlace(Long id, Place place) throws ServiceException {
         try {
             placeDB.updatePlace(id, place);
@@ -59,6 +63,7 @@ public class PlaceServiceImpl implements PlaceService {
         }
     }
 
+    @Override
     public void deletePlace(Long id) throws ServiceException {
         try {
             placeDB.deletePlace(id);
@@ -67,6 +72,7 @@ public class PlaceServiceImpl implements PlaceService {
         }
     }
 
+    @Override
     public void generatePlaceDetailsFromPlace(Long id) throws ServiceException {
         Place place = this.getPlaceById(id);
         PlaceDetails placeDetails = null;

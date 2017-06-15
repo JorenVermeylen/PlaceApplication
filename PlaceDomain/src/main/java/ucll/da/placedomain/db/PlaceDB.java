@@ -6,7 +6,7 @@ import ucll.da.placedomain.domain.PlaceDetails;
 import java.util.List;
 
 /**
- * Created by verme on 3/05/2017.
+ * Created by Joren on 3/05/2017.
  */
 public interface PlaceDB {
 

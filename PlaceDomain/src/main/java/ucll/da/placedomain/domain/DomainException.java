@@ -1,7 +1,7 @@
 package ucll.da.placedomain.domain;
 
 /**
- * Created by verme on 3/05/2017.
+ * Created by Joren on 3/05/2017.
  */
 public class DomainException extends Exception {
 

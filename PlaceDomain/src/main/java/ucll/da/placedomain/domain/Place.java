@@ -8,7 +8,7 @@ import javax.inject.Named;
 import javax.validation.constraints.NotNull;
 
 /**
- * Created by verme on 3/05/2017.
+ * Created by Joren on 3/05/2017.
  */
 @Named
 @Entity
